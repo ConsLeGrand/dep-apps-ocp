@@ -2,6 +2,7 @@
 from flask import Flask
 import mysql.connector
 import os
+import time
 
 app = Flask(__name__)
 
@@ -12,6 +13,14 @@ db_config = {
     'database': os.getenv('DB_NAME', 'mydb')
 }
 
+for i in range(5):
+    try:
+        conn = mysql.connector.connect(**db_config)
+        break
+    except Exception as e:
+        print(f"Tentative {i+1}/5: MySQL pas encore prêt...")
+        time.sleep(5)
+        
 @app.route('/')
 def index():
     try:
@@ -22,6 +31,11 @@ def index():
         return f"Connexion MySQL OK - Time: {result[0]}"
     except Exception as e:
         return f"Erreur connexion MySQL : {str(e)}"
+        
+@app.route('/debug')
+def debug():
+    return str(db_config)
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
