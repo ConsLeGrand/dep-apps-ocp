@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 db_config = {
-    'host': os.getenv('DB_HOST', 'mysql-svc'),
+    'host': os.getenv('DB_HOST', 'mysql'),
     'user': os.getenv('DB_USER', 'user1'),
     'password': os.getenv('DB_PASS', 'pass123'),
     'database': os.getenv('DB_NAME', 'mydb')
