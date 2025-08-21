@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask
+from flask import Flask, request
 import mysql.connector
 import os
 import elasticapm
