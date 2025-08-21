@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # Configuration APM
 app.config['ELASTIC_APM'] = {
-    'SERVICE_NAME': 'flask-apm-ocp',
+    'SERVICE_NAME': 'dep-apps-ocp-git',
     'SERVER_URL': 'http://fleet01.heritage.africa:8200',  # à adapter selon ton infra
     'ENVIRONMENT': 'production'
 }
